@@ -19,4 +19,15 @@ router.get('/third', function(req, res, next) {
 	});
 });
 
+router.get('/third/:id', function(req, res, next) {
+	var markup = React.renderToString(Third({
+		id: req.params.id
+	}));
+
+	res.render('third', {
+		title: 'Express',
+		markup: markup
+	});
+});
+
 module.exports = router;
