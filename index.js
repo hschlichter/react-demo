@@ -22,17 +22,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(require('node-sass-middleware')({
-	src: path.join(__dirname, 'dist'),
-	dest: path.join(__dirname, 'dist'),
-	indentedSyntax: true,
-	sourceMap: true
-}));
-app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(routes);
 app.use(second);
 app.use(third);
+
+app.use('/', express.static(path.join(__dirname, 'dist')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
