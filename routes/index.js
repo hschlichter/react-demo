@@ -9,7 +9,6 @@ require('node-jsx').install({
 var React = require('react');
 var Right = React.createFactory(require('../public/js/components/right'));
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
 	var markup = React.renderToString(Right());
 

@@ -9,7 +9,6 @@ require('node-jsx').install({
 var React = require('react');
 var Third = React.createFactory(require('../public/js/components/third'));
 
-/* GET third. */
 router.get('/third', function(req, res, next) {
 	var markup = React.renderToString(Third());
 
