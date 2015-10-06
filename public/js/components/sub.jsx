@@ -1,13 +1,11 @@
 var React = require('react');
-var Sub = require('./sub.jsx');
 
 var Left = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<h1>Left!</h1>
-				<p>Rendered on the client.</p>
-				<Sub msg="hello" />
+				<h3>Sub!</h3>
+				<p>{this.props.msg}</p>
 			</div>
 		);
 	}

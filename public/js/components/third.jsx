@@ -1,4 +1,5 @@
 var React = require('react');
+var Sub = require('./sub.jsx');
 
 var Third = React.createClass({
 	render: function () {
@@ -12,6 +13,7 @@ var Third = React.createClass({
 				<h1>Third component</h1>
 				<p>Rendered on the server.</p>
 				{id}
+				<Sub msg={'id : ' + this.props.id} />
 			</div>
 		);
 	}
