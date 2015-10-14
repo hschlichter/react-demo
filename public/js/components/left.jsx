@@ -1,5 +1,6 @@
 var React = require('react');
 var Sub = require('./sub.jsx');
+var CountButton = require('./countbutton.jsx');
 
 var Left = React.createClass({
 	render: function () {
@@ -8,6 +9,7 @@ var Left = React.createClass({
 				<h1>Left!</h1>
 				<p>Rendered on the client.</p>
 				<Sub msg="hello" />
+				<CountButton />
 			</div>
 		);
 	}

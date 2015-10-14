@@ -1,5 +1,6 @@
 var React = require('react');
 var Sub = require('./sub.jsx');
+var CountButton = require('./countbutton.jsx');
 
 var Third = React.createClass({
 	render: function () {
@@ -14,6 +15,7 @@ var Third = React.createClass({
 				<p>Rendered on the server.</p>
 				{id}
 				<Sub msg={'id : ' + this.props.id} />
+				<CountButton />
 			</div>
 		);
 	}
