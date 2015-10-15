@@ -1,8 +1,11 @@
-var React = require('react');
+import {
+	React,
+	ReactDOM
+} from 'react';
 
 if (typeof window !== 'undefined') {
 	window.onload = function() {
 		var Left = React.createFactory(require('../components/left'));
-		React.render(Left(), document.getElementById('content-left'));
+		ReactDOM.render(Left(), document.getElementById('content-left'));
 	};
 }

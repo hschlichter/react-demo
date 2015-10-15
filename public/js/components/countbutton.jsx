@@ -7,19 +7,9 @@ var CountButton = React.createClass({
 		};
 	},
 	handleClick: function (event) {
-		console.log('clicked');
 		this.setState({
 			count: this.state.count + 1
 		});
-	},
-	componentDidMount: function () {
-		console.log('did mount');
-	},
-	componentWillUnmount: function () {
-		console.log('unmount');
-	},
-	componentWillMount: function () {
-		console.log('will mount');
 	},
 	render: function () {
 		return (

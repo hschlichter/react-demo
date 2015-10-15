@@ -7,7 +7,7 @@ module.exports = [{
 		app: './pages/app.js',
 		second: './pages/second.js',
 		third: './pages/third.js',
-		vendor: ['react']
+		vendor: ['react', 'react-dom']
 	},
 	output: {
 		path: path.join(__dirname, 'dist', 'js'),
@@ -16,8 +16,13 @@ module.exports = [{
 	module: {
 		loaders: [
 			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loaders: ['babel-loader']
+			},
+			{
 				test: /\.jsx$/,
-				loader: 'jsx-loader?harmony'
+				loaders: ['babel-loader', 'jsx-loader?harmony']
 			}
 		]
 	},
