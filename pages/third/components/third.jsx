@@ -1,6 +1,6 @@
 var React = require('react');
-var Sub = require('./sub.jsx');
-var CountButton = require('./countbutton.jsx');
+var Sub = require('../../../shared/components/sub.jsx');
+var CountButton = require('../../../shared/components/countbutton.jsx');
 
 var Third = React.createClass({
 	render: function () {

@@ -9,13 +9,15 @@ require('node-jsx').install({
 var React = require('react');
 var ReactDOM = require('react-dom/server');
 
-var Right = React.createFactory(require('../public/js/components/right'));
+var Right = React.createFactory(require('./components/right'));
 
 router.get('/', function(req, res, next) {
-	var markup = React.renderToString(Right());
+	var context = {};
+	var markup = ReactDOM.renderToString(Right());
 
-	res.render('index', {
-		js: '/js/app.bundle.js',
+	res.render('index/views/main', {
+		js: '/js/index.bundle.js',
+		context: JSON.stringify(context),
 		title: 'Express',
 		markup: markup
 	});

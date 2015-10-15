@@ -1,14 +1,24 @@
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 
+var entry = {
+	vendor: ['react', 'react-dom']
+};
+
+var basePath = path.join(__dirname, 'pages');
+var dirs = fs.readdirSync(basePath)
+	.filter((file) => {
+		return fs.statSync(path.join(basePath, file)).isDirectory();
+	});
+
+dirs.forEach((dir) => {
+	entry[dir] = './pages/' + dir + '/entry.js';
+});
+
 module.exports = [{
-	context: path.join(__dirname, 'public', 'js'),
-	entry: {
-		app: './pages/app.js',
-		second: './pages/second.js',
-		third: './pages/third.js',
-		vendor: ['react', 'react-dom']
-	},
+	context: __dirname,
+	entry: entry,
 	output: {
 		path: path.join(__dirname, 'dist', 'js'),
 		filename: '[name].bundle.js'
@@ -31,14 +41,14 @@ module.exports = [{
 			output: {
 				comments: false
 			},
-			sourceMap: false,
+			sourceMap: true,
 			mangle: false
 		}),
 		new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
 	],
 	resolve: {
 		extensions: ['', '.js', '.jsx'],
-		root: [path.join(__dirname, 'public', 'js')],
+		root: [__dirname],
 		modulesDirectories: ['node_modules']
 	}
 }];

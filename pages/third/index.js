@@ -9,12 +9,15 @@ require('node-jsx').install({
 var React = require('react');
 var ReactDOM = require('react-dom/server');
 
-var Third = React.createFactory(require('../public/js/components/third'));
+var Third = React.createFactory(require('./components/third'));
 
 router.get('/third', function(req, res, next) {
+	var context = {};
 	var markup = ReactDOM.renderToString(Third());
 
-	res.render('pages/third', {
+	res.render('third/views/main', {
+		js: '/js/third.bundle.js',
+		context: JSON.stringify(context),
 		title: 'Express',
 		markup: markup
 	});
@@ -26,13 +29,13 @@ router.get('/third/:id', function(req, res, next) {
 	};
 
 	var markup = ReactDOM.renderToString(Third({
-		id: req.params.id
+		id: context.params.id
 	}));
 
-	res.render('pages/third', {
+	res.render('third/views/main', {
 		js: '/js/third.bundle.js',
-		title: 'Express',
 		context: JSON.stringify(context),
+		title: 'Express',
 		markup: markup
 	});
 });
