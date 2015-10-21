@@ -1,18 +1,15 @@
-var React = require('react');
-var Sub = require('../../../shared/components/sub.jsx');
-var CountButton = require('../../../shared/components/countbutton.jsx');
+import React, { Component } from 'react';
+import Sub from '../../../components/sub.jsx';
+import CountButton from '../../../components/countbutton.jsx';
 
-var Left = React.createClass({
-	render: function () {
+export default class Left extends Component {
+	render() {
 		return (
 			<div>
 				<h1>Left!</h1>
 				<p>Rendered on the client.</p>
 				<Sub msg="hello" />
-				<CountButton />
 			</div>
 		);
 	}
-});
-
-module.exports = Left;
+}

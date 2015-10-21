@@ -1,7 +1,7 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var Right = React.createClass({
-	render: function () {
+export default class Right extends Component {
+	render() {
 		return (
 			<div>
 				<h1>Right!</h1>
@@ -9,6 +9,4 @@ var Right = React.createClass({
 			</div>
 		);
 	}
-});
-
-module.exports = Right;
+}

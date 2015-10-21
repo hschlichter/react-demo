@@ -3,16 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configurestore';
-import Right from './components/right';
+import HackerNews from './components/hackernews';
 
 let router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/hackernews', function(req, res, next) {
 	const store = configureStore();
 
 	let markup = ReactDOM.renderToString(
 		<Provider store={store}>
-			<Right />
+			<HackerNews />
 		</Provider>
 	);
 
@@ -21,8 +21,8 @@ router.get('/', function(req, res, next) {
 		state: store.getState()
 	};
 
-	res.render('index/views/main', {
-		js: '/js/index.bundle.js',
+	res.render('hackernews/views/main', {
+		js: '/js/hackernews.bundle.js',
 		context: JSON.stringify(context),
 		title: 'Express',
 		markup: markup

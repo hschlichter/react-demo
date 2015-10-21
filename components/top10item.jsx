@@ -1,6 +1,6 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var Top10Item = React.createClass({
+export default class Top10Item extends Component {
 	render() {
 		return (
 			<div>
@@ -8,6 +8,4 @@ var Top10Item = React.createClass({
 			</div>
 		);
 	}
-});
-
-module.exports = Top10Item;
+}
