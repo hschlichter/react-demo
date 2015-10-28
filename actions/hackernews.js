@@ -10,13 +10,16 @@ export function receive(json) {
 }
 
 export function fetch() {
-	return (dispatch) => {
-		superagent
-			.get('https://www.kimonolabs.com/api/c30pdwri')
-			.end((err, res) => {
-				if (res.ok) {
-					dispatch(receive(res.body.results.collection1));
-				}
-			});
+	return (dispatch, getState) => {
+		const state = getState();
+		if (state.hackernews.items.length === 0) {
+			superagent
+				.get('https://www.kimonolabs.com/api/c30pdwri')
+				.end((err, res) => {
+					if (res.ok) {
+						dispatch(receive(res.body.results.collection1));
+					}
+				});
+		}
 	};
 }
