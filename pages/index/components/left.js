@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sub from '../../../components/sub.jsx';
-import CountButton from '../../../components/countbutton.jsx';
+import Sub from '../../../components/sub';
+import CountButton from '../../../components/countbutton';
 
 export default class Left extends Component {
 	render() {
