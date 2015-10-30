@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configurestore';
-import HackerNews from './components/hackernews';
+import Layout from './components/layout';
 import { receive } from '../../actions/hackernews';
 import superagent from 'superagent';
 
@@ -19,9 +19,9 @@ router.get('/hackernews', function(req, res, next) {
 				store.dispatch(receive(res2.body.results.collection1));
 			}
 
-			let markup = ReactDOM.renderToString(
+			let main = ReactDOM.renderToString(
 				<Provider store={store}>
-					<HackerNews />
+					<Layout />
 				</Provider>
 			);
 
@@ -30,11 +30,13 @@ router.get('/hackernews', function(req, res, next) {
 				state: store.getState()
 			};
 
-			res.render('hackernews/views/main', {
-				js: '/js/hackernews.bundle.js',
-				context: JSON.stringify(context),
+			res.render('basetemplate', {
 				title: 'Express',
-				markup: markup
+				context: JSON.stringify(context),
+				bundle: '/js/hackernews.bundle.js',
+				main: main,
+				header: '',
+				footer: ''
 			});
 		});
 });

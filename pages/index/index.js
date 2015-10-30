@@ -3,16 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configurestore';
-import Right from './components/right';
+import Layout from './components/layout';
 
 let router = express.Router();
 
 router.get('/', function(req, res, next) {
 	const store = configureStore();
 
-	let markup = ReactDOM.renderToString(
+	let main = ReactDOM.renderToString(
 		<Provider store={store}>
-			<Right />
+			<Layout />
 		</Provider>
 	);
 
@@ -21,11 +21,13 @@ router.get('/', function(req, res, next) {
 		state: store.getState()
 	};
 
-	res.render('index/views/main', {
-		js: '/js/index.bundle.js',
-		context: JSON.stringify(context),
+	res.render('basetemplate', {
 		title: 'Express',
-		markup: markup
+		context: JSON.stringify(context),
+		bundle: '/js/index.bundle.js',
+		main: main,
+		header: '',
+		footer: ''
 	});
 });
 
