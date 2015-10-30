@@ -13,7 +13,7 @@ var dirs = fs.readdirSync(basePath)
 	});
 
 dirs.forEach((dir) => {
-	entry[dir] = './pages/' + dir + '/entry.js';
+	entry[dir] = './pages/' + dir + '/client.js';
 });
 
 module.exports = [{
