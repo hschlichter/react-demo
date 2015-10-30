@@ -1,7 +1,7 @@
 import { INCREMENT } from '../actions/countbutton.js';
 
 const initialState = {
-	count: []
+	count: 0
 };
 
 export default function countbutton(state = initialState, action = {}) {

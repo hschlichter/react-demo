@@ -3,12 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configurestore';
+import reducers from './reducers';
 import Layout from './components/layout';
 
 let router = express.Router();
 
 router.get('/', function(req, res, next) {
-	const store = configureStore();
+	const store = configureStore(reducers);
 
 	let main = ReactDOM.renderToString(
 		<Provider store={store}>

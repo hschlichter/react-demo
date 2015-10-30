@@ -4,13 +4,14 @@ import ReactDOM from 'react-dom/server';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configurestore';
 import Layout from './components/layout';
-import { receive } from '../../actions/hackernews';
+import { receive } from './actions/hackernews';
+import reducers from './reducers';
 import superagent from 'superagent';
 
 let router = express.Router();
 
 router.get('/hackernews', function(req, res, next) {
-	const store = configureStore();
+	const store = configureStore(reducers);
 
 	superagent
 		.get('https://www.kimonolabs.com/api/c30pdwri')

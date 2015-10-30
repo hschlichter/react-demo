@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetch } from '../../../actions/hackernews';
+import { fetch } from '../actions/hackernews';
 import Top10List from '../../../components/top10list';
 
 class HackerNews extends Component {

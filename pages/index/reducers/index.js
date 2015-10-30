@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
-import hackernews from './hackernews';
-import countbutton from './countbutton';
+import countbutton from '../../../reducers/countbutton';
 
 const reducers = combineReducers({
-	hackernews,
 	countbutton
 });
 

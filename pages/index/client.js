@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from '../../store/configurestore';
+import reducers from './reducers';
 import Left from './components/left';
 
-const store = configureStore(context.state);
+const store = configureStore(reducers, context.state);
 
 if (typeof window !== 'undefined') {
 	window.onload = function() {
