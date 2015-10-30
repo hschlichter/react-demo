@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import configureStore from '../../store/configurestore';
+import configureStore from '../../store/clientstore';
 import reducers from './reducers';
 import Left from './components/left';
 
