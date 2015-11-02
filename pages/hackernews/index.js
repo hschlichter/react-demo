@@ -6,40 +6,36 @@ import configureStore from '../../store/serverstore';
 import Layout from './components/layout';
 import { receive } from './actions/hackernews';
 import reducers from './reducers';
-import superagent from 'superagent';
+import { fetchTop30 } from './sideeffects/hackernews';
 
 let router = express.Router();
 
 router.get('/hackernews', function(req, res, next) {
 	const store = configureStore(reducers);
 
-	superagent
-		.get('https://www.kimonolabs.com/api/c30pdwri')
-		.end((err, res2) => {
-			if (res2.ok) {
-				store.dispatch(receive(res2.body.results.collection1));
-			}
+	fetchTop30().then((json) => {
+		store.dispatch(receive(json));
 
-			let main = ReactDOM.renderToString(
-				<Provider store={store}>
-					<Layout />
-				</Provider>
-			);
+		let main = ReactDOM.renderToString(
+			<Provider store={store}>
+				<Layout />
+			</Provider>
+		);
 
-			let context = {
-				params: req.params,
-				state: store.getState()
-			};
+		let context = {
+			params: req.params,
+			state: store.getState()
+		};
 
-			res.render('basetemplate', {
-				title: 'Express',
-				context: JSON.stringify(context),
-				bundle: '/js/hackernews.bundle.js',
-				main: main,
-				header: '',
-				footer: ''
-			});
+		res.render('basetemplate', {
+			title: 'Express',
+			context: JSON.stringify(context),
+			bundle: '/js/hackernews.bundle.js',
+			main: main,
+			header: '',
+			footer: ''
 		});
+	});
 });
 
 module.exports = router;

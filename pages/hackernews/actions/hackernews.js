@@ -1,4 +1,4 @@
-import superagent from 'superagent';
+import { fetchTop30 } from '../sideeffects/hackernews';
 
 export const RECEIVE = 'HACKERNEWS_RECEIVE';
 
@@ -13,13 +13,9 @@ export function fetch() {
 	return (dispatch, getState) => {
 		const state = getState();
 		if (state.hackernews.items.length === 0) {
-			superagent
-				.get('https://www.kimonolabs.com/api/c30pdwri')
-				.end((err, res) => {
-					if (res.ok) {
-						dispatch(receive(res.body.results.collection1));
-					}
-				});
+			fetchTop30().then((json) => {
+				dispatch(receive(json));
+			});
 		}
 	};
 }
