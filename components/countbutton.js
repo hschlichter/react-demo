@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { increment } from '../actions/countbutton';
 
 export default class CountButton extends Component {
-	componentDidMount() {
-		console.log(this.props);
-	}
-
 	render() {
 		return (
 			<button onClick={this.props.handleClick}>

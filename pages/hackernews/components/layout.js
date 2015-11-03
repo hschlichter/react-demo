@@ -6,7 +6,7 @@ export default class Layout extends Component {
 		return (
 			<div>
 				<hr />
-				<div id="content">
+				<div>
 					<HackerNews />
 				</div>
 			</div>
