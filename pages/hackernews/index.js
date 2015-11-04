@@ -2,7 +2,7 @@ import express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { Provider } from 'react-redux';
-import configureStore from '../../store/serverstore';
+import configureStore from '../../shared/store/serverstore';
 import Layout from './components/layout';
 import { receive } from './actions/hackernews';
 import reducers from './reducers';

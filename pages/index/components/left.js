@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Sub from '../../../components/sub';
-import CountButton from '../../../components/countbutton';
-import { increment } from '../../../actions/countbutton';
+import Sub from '../../../shared/components/sub';
+import CountButton from '../../../shared/components/countbutton';
+import { increment } from '../../../shared/actions/countbutton';
 
 export default class Left extends Component {
 	render() {
